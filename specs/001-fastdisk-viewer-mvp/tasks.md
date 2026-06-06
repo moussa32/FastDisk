@@ -18,14 +18,14 @@
 
 **Purpose**: Establish the project structure, dependencies, and testing baseline needed for the MVP.
 
-- [ ] T001 Add Rust dependencies for SQLite, time handling, filesystem traversal helpers, cancellation flags, and serialization in src-tauri/Cargo.toml
-- [ ] T002 Add frontend dependencies for async query state, table rendering, virtualization, treemap rendering, and test tooling in package.json
-- [ ] T003 Create backend module directories scanner, db, repository, aggregator, commands, events, and models under src-tauri/src/
-- [ ] T004 Create frontend feature directories scan, tree, largest-files, largest-folders, treemap, search, extensions, errors, and shared directories under src/
-- [ ] T005 [P] Add Rust test module structure for unit and integration coverage in src-tauri/src/lib.rs and src-tauri/src/test_support.rs
-- [ ] T006 [P] Add frontend test setup and shared render helpers in src/shared/test/render.tsx and src/setupTests.ts
-- [ ] T007 Replace starter Tauri greeting wiring with FastDisk module registration skeleton in src-tauri/src/lib.rs
-- [ ] T008 Replace starter React welcome screen with FastDisk app shell placeholder in src/App.tsx and src/App.css
+- [x] T001 Add Rust dependencies for SQLite, time handling, filesystem traversal helpers, cancellation flags, and serialization in src-tauri/Cargo.toml
+- [x] T002 Add frontend dependencies for async query state, table rendering, virtualization, treemap rendering, and test tooling in package.json
+- [x] T003 Create backend module directories scanner, db, repository, aggregator, commands, events, and models under src-tauri/src/
+- [x] T004 Create frontend feature directories scan, tree, largest-files, largest-folders, treemap, search, extensions, errors, and shared directories under src/
+- [x] T005 [P] Add Rust test module structure for unit and integration coverage in src-tauri/src/lib.rs and src-tauri/src/test_support.rs
+- [x] T006 [P] Add frontend test setup and shared render helpers in src/shared/test/render.tsx and src/setupTests.ts
+- [x] T007 Replace starter Tauri greeting wiring with FastDisk module registration skeleton in src-tauri/src/lib.rs
+- [x] T008 Replace starter React welcome screen with FastDisk app shell placeholder in src/App.tsx and src/App.css
 
 ---
 

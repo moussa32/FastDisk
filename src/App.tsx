@@ -1,49 +1,77 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import { invoke } from "@tauri-apps/api/core";
 import "./App.css";
 
+const resultTabs = [
+  "Tree View",
+  "Largest Files",
+  "Largest Folders",
+  "Treemap",
+  "Extensions",
+  "Scan Errors",
+];
+
 function App() {
-  const [greetMsg, setGreetMsg] = useState("");
-  const [name, setName] = useState("");
-
-  async function greet() {
-    // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
-    setGreetMsg(await invoke("greet", { name }));
-  }
-
   return (
-    <main className="container">
-      <h1>Welcome to Tauri + React</h1>
+    <main className="app-shell">
+      <section className="scan-panel" aria-labelledby="scan-heading">
+        <div>
+          <p className="eyebrow">FastDisk Viewer</p>
+          <h1 id="scan-heading">Read-only disk usage analysis</h1>
+          <p className="lede">
+            Select a folder or drive, scan it locally, and inspect disk usage
+            without deleting, moving, renaming, uploading, or modifying files.
+          </p>
+        </div>
 
-      <div className="row">
-        <a href="https://vite.dev" target="_blank">
-          <img src="/vite.svg" className="logo vite" alt="Vite logo" />
-        </a>
-        <a href="https://tauri.app" target="_blank">
-          <img src="/tauri.svg" className="logo tauri" alt="Tauri logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <p>Click on the Tauri, Vite, and React logos to learn more.</p>
+        <div className="scan-controls" aria-label="Scan setup">
+          <div className="path-preview">No path selected</div>
+          <div className="button-row">
+            <button type="button">Choose Path</button>
+            <button type="button" disabled>
+              Start Scan
+            </button>
+          </div>
+        </div>
+      </section>
 
-      <form
-        className="row"
-        onSubmit={(e) => {
-          e.preventDefault();
-          greet();
-        }}
-      >
-        <input
-          id="greet-input"
-          onChange={(e) => setName(e.currentTarget.value)}
-          placeholder="Enter a name..."
-        />
-        <button type="submit">Greet</button>
-      </form>
-      <p>{greetMsg}</p>
+      <section className="results-shell" aria-label="Scan results">
+        <aside className="summary-panel">
+          <h2>Scan Summary</h2>
+          <dl>
+            <div>
+              <dt>Status</dt>
+              <dd>Idle</dd>
+            </div>
+            <div>
+              <dt>Total size</dt>
+              <dd>0 B</dd>
+            </div>
+            <div>
+              <dt>Skipped items</dt>
+              <dd>0</dd>
+            </div>
+          </dl>
+        </aside>
+
+        <section className="results-panel">
+          <div className="tabs" role="tablist" aria-label="Result views">
+            {resultTabs.map((tab, index) => (
+              <button
+                aria-selected={index === 0}
+                className="tab"
+                key={tab}
+                role="tab"
+                type="button"
+              >
+                {tab}
+              </button>
+            ))}
+          </div>
+          <div className="empty-results">
+            Complete a scan to browse folders, largest items, treemap data, file
+            types, and scan errors.
+          </div>
+        </section>
+      </section>
     </main>
   );
 }
