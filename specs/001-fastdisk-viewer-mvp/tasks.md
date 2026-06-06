@@ -63,24 +63,24 @@
 
 ### Tests for User Story 1
 
-- [ ] T024 [P] [US1] Add scanner tests for normal folders, empty folders, zero-byte files, Unicode names, and link-like paths in src-tauri/src/scanner/tests.rs
-- [ ] T025 [P] [US1] Add scanner robustness tests for inaccessible or locked paths where practical in src-tauri/src/scanner/tests.rs
-- [ ] T026 [P] [US1] Add scan session command tests for start_scan, cancel_scan, and get_scan_session in src-tauri/src/commands/tests.rs
-- [ ] T027 [P] [US1] Add scan screen component tests for disabled scan, selected path, progress, cancellation, and summary states in src/features/scan/ScanScreen.test.tsx
+- [x] T024 [P] [US1] Add scanner tests for normal folders, empty folders, zero-byte files, Unicode names, and link-like paths in src-tauri/src/scanner/tests.rs
+- [x] T025 [P] [US1] Add scanner robustness tests for inaccessible or locked paths where practical in src-tauri/src/scanner/tests.rs
+- [x] T026 [P] [US1] Add scan session command tests for start_scan, cancel_scan, and get_scan_session in src-tauri/src/commands/tests.rs
+- [x] T027 [P] [US1] Add scan screen component tests for disabled scan, selected path, progress, cancellation, and summary states in src/features/scan/ScanScreen.test.tsx
 
 ### Implementation for User Story 1
 
-- [ ] T028 [US1] Implement read-only recursive scanner that records metadata and does not follow symlink or junction directories in src-tauri/src/scanner/mod.rs
-- [ ] T029 [US1] Implement scan worker orchestration, one-active-scan guard, cancellation flag, and progress collection in src-tauri/src/scanner/session.rs
-- [ ] T030 [US1] Implement batched file_entry and scan_error writes during scans in src-tauri/src/repository/scan_writer.rs
-- [ ] T031 [US1] Implement folder size aggregation and child/descendant count updates after traversal in src-tauri/src/aggregator/mod.rs
-- [ ] T032 [US1] Implement start_scan, cancel_scan, and get_scan_session Tauri commands in src-tauri/src/commands/scan.rs
-- [ ] T033 [US1] Register scan commands and scan lifecycle events in src-tauri/src/lib.rs
-- [ ] T034 [US1] Implement typed frontend scan command wrappers and event listeners in src/shared/api/scan.ts
-- [ ] T035 [US1] Implement PathPicker, ScanButton, ScanProgressCard, and ScanSummaryCard in src/features/scan/
-- [ ] T036 [US1] Implement ScanScreen orchestration for selecting paths, starting scans, progress events, cancellation, and summary loading in src/features/scan/ScanScreen.tsx
-- [ ] T037 [US1] Integrate ScanScreen into the app shell and remove starter placeholder content in src/App.tsx
-- [ ] T038 [US1] Add friendly empty, invalid path, scan failed, cancelled, and skipped-item messages in src/features/scan/ScanMessages.tsx
+- [x] T028 [US1] Implement read-only recursive scanner that records metadata and does not follow symlink or junction directories in src-tauri/src/scanner/mod.rs
+- [x] T029 [US1] Implement scan worker orchestration, one-active-scan guard, cancellation flag, and progress collection in src-tauri/src/scanner/session.rs
+- [x] T030 [US1] Implement batched file_entry and scan_error writes during scans in src-tauri/src/repository/scan_writer.rs
+- [x] T031 [US1] Implement folder size aggregation and child/descendant count updates after traversal in src-tauri/src/aggregator/mod.rs
+- [x] T032 [US1] Implement start_scan, cancel_scan, and get_scan_session Tauri commands in src-tauri/src/commands/scan.rs
+- [x] T033 [US1] Register scan commands and scan lifecycle events in src-tauri/src/lib.rs
+- [x] T034 [US1] Implement typed frontend scan command wrappers and event listeners in src/shared/api/scan.ts
+- [x] T035 [US1] Implement PathPicker, ScanButton, ScanProgressCard, and ScanSummaryCard in src/features/scan/
+- [x] T036 [US1] Implement ScanScreen orchestration for selecting paths, starting scans, progress events, cancellation, and summary loading in src/features/scan/ScanScreen.tsx
+- [x] T037 [US1] Integrate ScanScreen into the app shell and remove starter placeholder content in src/App.tsx
+- [x] T038 [US1] Add friendly empty, invalid path, scan failed, cancelled, and skipped-item messages in src/features/scan/ScanMessages.tsx
 
 **Checkpoint**: User Story 1 is independently functional and testable.
 

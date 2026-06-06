@@ -38,15 +38,15 @@ export const commandNames = {
 } as const;
 
 export function startScan(input: StartScanInput) {
-  return invoke<StartScanResponse>(commandNames.startScan, input);
+  return invoke<StartScanResponse>(commandNames.startScan, { input });
 }
 
 export function cancelScan(input: CancelScanInput) {
-  return invoke<void>(commandNames.cancelScan, input);
+  return invoke<void>(commandNames.cancelScan, { scanSessionId: input.scanSessionId });
 }
 
 export function getScanSession(input: GetScanSessionInput) {
-  return invoke<ScanSessionDto>(commandNames.getScanSession, input);
+  return invoke<ScanSessionDto>(commandNames.getScanSession, { scanSessionId: input.scanSessionId });
 }
 
 export function listScanSessions(input: ListScanSessionsInput) {

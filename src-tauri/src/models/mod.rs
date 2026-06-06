@@ -35,6 +35,28 @@ pub struct ScanSession {
     pub elapsed_ms: i64,
 }
 
+impl ScanStatus {
+    pub fn as_str(self) -> &'static str {
+        match self {
+            Self::Idle => "idle",
+            Self::Scanning => "scanning",
+            Self::Completed => "completed",
+            Self::Failed => "failed",
+            Self::Cancelled => "cancelled",
+        }
+    }
+
+    pub fn from_db(value: &str) -> Self {
+        match value {
+            "scanning" => Self::Scanning,
+            "completed" => Self::Completed,
+            "failed" => Self::Failed,
+            "cancelled" => Self::Cancelled,
+            _ => Self::Idle,
+        }
+    }
+}
+
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct FileEntry {

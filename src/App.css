@@ -95,6 +95,10 @@ h2 {
 }
 
 .scan-controls {
+  display: contents;
+}
+
+.scan-actions {
   display: grid;
   gap: 0.75rem;
 }
@@ -170,6 +174,17 @@ dd {
   justify-content: center;
   padding: 2rem;
   text-align: center;
+}
+
+.progress-card {
+  padding: 1rem;
+}
+
+.progress-card dd {
+  max-width: min(70vw, 720px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .state-message {
