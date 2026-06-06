@@ -77,6 +77,10 @@
 
 - What happens when [boundary condition]?
 - How does system handle [error scenario]?
+- How does the feature preserve read-only behavior and avoid file mutation?
+- How does the feature avoid requesting or rendering an unbounded scan tree?
+- How does the feature handle inaccessible paths, locked files, skipped entries,
+  and Unicode/Arabic names where applicable?
 
 ## Requirements *(mandatory)*
 
@@ -92,6 +96,12 @@
 - **FR-003**: Users MUST be able to [key interaction, e.g., "reset their password"]
 - **FR-004**: System MUST [data requirement, e.g., "persist user preferences"]
 - **FR-005**: System MUST [behavior, e.g., "log all security events"]
+- **FR-006**: System MUST preserve FastDisk Viewer read-only scope: no delete,
+  move, rename, compress, cleanup, upload, or file-content mutation behavior.
+- **FR-007**: System MUST use SQLite-backed Rust/Tauri commands for scan data,
+  aggregation, search, and large result queries.
+- **FR-008**: System MUST return bounded or scoped result sets for tree, table,
+  search, and treemap views.
 
 *Example of marking unclear requirements:*
 
@@ -116,6 +126,8 @@
 - **SC-002**: [Measurable metric, e.g., "System handles 1000 concurrent users without degradation"]
 - **SC-003**: [User satisfaction metric, e.g., "90% of users successfully complete primary task on first attempt"]
 - **SC-004**: [Business metric, e.g., "Reduce support tickets related to [X] by 50%"]
+- **SC-005**: UI remains responsive while scanning and browsing large results.
+- **SC-006**: No frontend view intentionally requests all rows from a large scan.
 
 ## Assumptions
 

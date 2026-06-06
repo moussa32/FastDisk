@@ -40,7 +40,25 @@
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+- **Read-only scope**: Confirm the feature does not delete, move, rename,
+  compress, upload, automatically clean, or modify user files.
+- **Rust-owned scanning/querying**: Confirm filesystem access, SQLite access,
+  aggregation, persistence, and production query logic stay in Rust/Tauri.
+- **SQLite-backed bounded data**: Confirm scan data is persisted in SQLite and
+  frontend commands use scoped, limited, paginated, or lazy-loaded queries.
+- **Frontend memory safety**: Confirm React never receives or stores the full
+  scan tree.
+- **Performance**: Confirm long-running work runs off the UI thread, progress
+  events are throttled, inserts are batched, heavy queries are indexed, and
+  large views are capped or virtualized.
+- **Robust scanning**: Confirm permission errors, locked files, broken symlinks,
+  long paths where practical, and Unicode/Arabic names are handled without
+  crashing the scan.
+- **MVP scope**: Confirm advanced NTFS/MFT scanning and AI features are out of
+  scope unless the constitution has been amended.
+- **Testing**: Confirm backend tests cover non-trivial scanner, database,
+  aggregation, and query logic; frontend tests cover meaningful UI state where
+  practical.
 
 ## Project Structure
 
