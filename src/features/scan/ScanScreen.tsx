@@ -15,6 +15,8 @@ import { ScanMessages } from "./ScanMessages";
 import { ScanProgressCard } from "./ScanProgressCard";
 import { ScanSummaryCard } from "./ScanSummaryCard";
 import { FileTree } from "../tree/FileTree";
+import { LargestFilesTable } from "../largest-files/LargestFilesTable";
+import { LargestFoldersTable } from "../largest-folders/LargestFoldersTable";
 
 const resultTabs = [
   "Tree View",
@@ -32,6 +34,7 @@ export function ScanScreen() {
   const [progress, setProgress] = useState<ScanProgressEvent>();
   const [session, setSession] = useState<ScanSessionDto>();
   const [errorMessage, setErrorMessage] = useState<string>();
+  const [activeTab, setActiveTab] = useState("Tree View");
 
   useEffect(() => {
     const unlisteners: Array<() => void> = [];
@@ -112,11 +115,12 @@ export function ScanScreen() {
 
         <section className="results-panel">
           <div className="tabs" role="tablist" aria-label="Result views">
-            {resultTabs.map((tab, index) => (
+            {resultTabs.map((tab) => (
               <button
-                aria-selected={index === 0}
+                aria-selected={activeTab === tab}
                 className="tab"
                 key={tab}
+                onClick={() => setActiveTab(tab)}
                 role="tab"
                 type="button"
               >
@@ -128,22 +132,7 @@ export function ScanScreen() {
           {status === "scanning" ? (
             <ScanProgressCard progress={progress} />
           ) : session ? (
-            <FileTree
-              root={{
-                id: 0,
-                scanSessionId: session.id,
-                parentId: null,
-                name: session.rootPath,
-                path: session.rootPath,
-                size: session.totalSize,
-                isDirectory: true,
-                depth: 0,
-                isSymlink: false,
-                childCount: session.totalFolders + session.totalFiles,
-                descendantCount: session.totalFolders + session.totalFiles,
-              }}
-              scanSessionId={session.id}
-            />
+            <ResultTabContent activeTab={activeTab} session={session} />
           ) : (
             <EmptyState
               title="No scan results yet"
@@ -159,5 +148,49 @@ export function ScanScreen() {
         status={status}
       />
     </main>
+  );
+}
+
+function ResultTabContent({
+  activeTab,
+  session,
+}: {
+  activeTab: string;
+  session: ScanSessionDto;
+}) {
+  if (activeTab === "Largest Files") {
+    return <LargestFilesTable scanSessionId={session.id} />;
+  }
+
+  if (activeTab === "Largest Folders") {
+    return <LargestFoldersTable scanSessionId={session.id} />;
+  }
+
+  if (activeTab !== "Tree View") {
+    return (
+      <EmptyState
+        title={`${activeTab} not available yet`}
+        description="This view is planned for a later MVP story."
+      />
+    );
+  }
+
+  return (
+    <FileTree
+      root={{
+        id: 0,
+        scanSessionId: session.id,
+        parentId: null,
+        name: session.rootPath,
+        path: session.rootPath,
+        size: session.totalSize,
+        isDirectory: true,
+        depth: 0,
+        isSymlink: false,
+        childCount: session.totalFolders + session.totalFiles,
+        descendantCount: session.totalFolders + session.totalFiles,
+      }}
+      scanSessionId={session.id}
+    />
   );
 }

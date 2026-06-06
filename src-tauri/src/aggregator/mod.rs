@@ -14,7 +14,10 @@ struct EntryAggregate {
     descendant_count: i64,
 }
 
-pub fn aggregate_folder_sizes(connection: &Connection, scan_session_id: i64) -> FastDiskResult<i64> {
+pub fn aggregate_folder_sizes(
+    connection: &Connection,
+    scan_session_id: i64,
+) -> FastDiskResult<i64> {
     let mut statement = connection.prepare(
         "SELECT id, parent_id, size, is_directory
          FROM file_entries
@@ -54,10 +57,7 @@ pub fn aggregate_folder_sizes(connection: &Connection, scan_session_id: i64) -> 
                     item.size = size;
                 }
             })
-            .or_insert(EntryAggregate {
-                size,
-                ..entry
-            });
+            .or_insert(EntryAggregate { size, ..entry });
 
         if let Some(parent_id) = totals.get(&entry_id).and_then(|item| item.parent_id) {
             let descendant_count = totals

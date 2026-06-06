@@ -51,21 +51,33 @@ pub struct StartScanResponse {
 }
 
 #[tauri::command]
-pub async fn start_scan(input: StartScanInput, state: State<'_, AppState>) -> Result<StartScanResponse, FrontendError> {
+pub async fn start_scan(
+    input: StartScanInput,
+    state: State<'_, AppState>,
+) -> Result<StartScanResponse, FrontendError> {
     start_scan_inner(input, &state).map_err(|error| error.to_frontend_error())
 }
 
 #[tauri::command]
-pub async fn cancel_scan(scan_session_id: i64, state: State<'_, AppState>) -> Result<(), FrontendError> {
+pub async fn cancel_scan(
+    scan_session_id: i64,
+    state: State<'_, AppState>,
+) -> Result<(), FrontendError> {
     cancel_scan_inner(scan_session_id, &state).map_err(|error| error.to_frontend_error())
 }
 
 #[tauri::command]
-pub async fn get_scan_session(scan_session_id: i64, state: State<'_, AppState>) -> Result<ScanSession, FrontendError> {
+pub async fn get_scan_session(
+    scan_session_id: i64,
+    state: State<'_, AppState>,
+) -> Result<ScanSession, FrontendError> {
     get_scan_session_inner(scan_session_id, &state).map_err(|error| error.to_frontend_error())
 }
 
-pub fn start_scan_inner(input: StartScanInput, state: &AppState) -> FastDiskResult<StartScanResponse> {
+pub fn start_scan_inner(
+    input: StartScanInput,
+    state: &AppState,
+) -> FastDiskResult<StartScanResponse> {
     let path = PathBuf::from(input.path);
     if !path.exists() {
         return Err(FastDiskError::InvalidPath);
@@ -132,7 +144,10 @@ pub fn cancel_scan_inner(scan_session_id: i64, state: &AppState) -> FastDiskResu
     Ok(())
 }
 
-pub fn get_scan_session_inner(scan_session_id: i64, state: &AppState) -> FastDiskResult<ScanSession> {
+pub fn get_scan_session_inner(
+    scan_session_id: i64,
+    state: &AppState,
+) -> FastDiskResult<ScanSession> {
     let _guard = state
         .connection_lock
         .lock()

@@ -1,7 +1,7 @@
-#[cfg(test)]
-mod tests;
 pub mod queries;
 pub mod scan_writer;
+#[cfg(test)]
+mod tests;
 
 use rusqlite::{params, Connection};
 
@@ -13,19 +13,27 @@ pub const MAX_LIMIT: i64 = 1_000;
 
 pub fn bounded_limit(limit: i64) -> FastDiskResult<i64> {
     if limit <= 0 {
-        return Err(FastDiskError::Other("Limit must be greater than zero.".into()));
+        return Err(FastDiskError::Other(
+            "Limit must be greater than zero.".into(),
+        ));
     }
     Ok(limit.min(MAX_LIMIT))
 }
 
 pub fn bounded_offset(offset: i64) -> FastDiskResult<i64> {
     if offset < 0 {
-        return Err(FastDiskError::Other("Offset must be zero or greater.".into()));
+        return Err(FastDiskError::Other(
+            "Offset must be zero or greater.".into(),
+        ));
     }
     Ok(offset)
 }
 
-pub fn create_scan_session(connection: &Connection, root_path: &str, started_at: &str) -> FastDiskResult<i64> {
+pub fn create_scan_session(
+    connection: &Connection,
+    root_path: &str,
+    started_at: &str,
+) -> FastDiskResult<i64> {
     connection.execute(
         "INSERT INTO scan_sessions (root_path, status, started_at) VALUES (?1, ?2, ?3)",
         params![root_path, status_to_db(ScanStatus::Scanning), started_at],
@@ -33,7 +41,10 @@ pub fn create_scan_session(connection: &Connection, root_path: &str, started_at:
     Ok(connection.last_insert_rowid())
 }
 
-pub fn get_scan_session(connection: &Connection, scan_session_id: i64) -> FastDiskResult<ScanSession> {
+pub fn get_scan_session(
+    connection: &Connection,
+    scan_session_id: i64,
+) -> FastDiskResult<ScanSession> {
     connection
         .query_row(
             "SELECT id, root_path, status, started_at, completed_at, total_files,
@@ -71,7 +82,12 @@ pub fn update_scan_session_status(
         "UPDATE scan_sessions
          SET status = ?1, completed_at = ?2, elapsed_ms = ?3
          WHERE id = ?4",
-        params![status_to_db(status), completed_at, elapsed_ms, scan_session_id],
+        params![
+            status_to_db(status),
+            completed_at,
+            elapsed_ms,
+            scan_session_id
+        ],
     )?;
     Ok(())
 }
@@ -136,7 +152,10 @@ pub fn list_children_ids(
              ORDER BY size DESC, name ASC
              LIMIT ?3 OFFSET ?4",
         )?;
-        let rows = statement.query_map(params![scan_session_id, parent_id, limit, offset], |row| row.get(0))?;
+        let rows = statement
+            .query_map(params![scan_session_id, parent_id, limit, offset], |row| {
+                row.get(0)
+            })?;
         let mut ids = Vec::new();
         for id in rows {
             ids.push(id?);
@@ -149,7 +168,8 @@ pub fn list_children_ids(
              ORDER BY size DESC, name ASC
              LIMIT ?2 OFFSET ?3",
         )?;
-        let rows = statement.query_map(params![scan_session_id, limit, offset], |row| row.get(0))?;
+        let rows =
+            statement.query_map(params![scan_session_id, limit, offset], |row| row.get(0))?;
         let mut ids = Vec::new();
         for id in rows {
             ids.push(id?);

@@ -25,11 +25,13 @@ pub async fn get_children(
     get_children_inner(input, &state).map_err(|error| error.to_frontend_error())
 }
 
-pub fn get_children_inner(input: GetChildrenInput, state: &AppState) -> FastDiskResult<Vec<FileEntry>> {
-    let _guard = state
-        .connection_lock
-        .lock()
-        .map_err(|_| crate::models::errors::FastDiskError::Other("Database lock poisoned.".into()))?;
+pub fn get_children_inner(
+    input: GetChildrenInput,
+    state: &AppState,
+) -> FastDiskResult<Vec<FileEntry>> {
+    let _guard = state.connection_lock.lock().map_err(|_| {
+        crate::models::errors::FastDiskError::Other("Database lock poisoned.".into())
+    })?;
     let connection = state.open_connection()?;
     query_children(
         &connection,

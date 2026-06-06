@@ -15,7 +15,10 @@ fn migrations_create_required_tables() {
     let connection = open_in_memory_database().expect("in-memory database should open");
 
     for table in migrations::REQUIRED_TABLES {
-        assert!(object_exists(&connection, table, "table"), "{table} missing");
+        assert!(
+            object_exists(&connection, table, "table"),
+            "{table} missing"
+        );
     }
 }
 
@@ -24,6 +27,9 @@ fn migrations_create_required_indexes() {
     let connection = open_in_memory_database().expect("in-memory database should open");
 
     for index in migrations::REQUIRED_INDEXES {
-        assert!(object_exists(&connection, index, "index"), "{index} missing");
+        assert!(
+            object_exists(&connection, index, "index"),
+            "{index} missing"
+        );
     }
 }

@@ -275,6 +275,108 @@ dd {
   padding-left: 0.5rem;
 }
 
+.result-view {
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  min-height: 0;
+  padding: 0.75rem;
+}
+
+.table-toolbar {
+  align-items: end;
+  border-bottom: 1px solid #eef2ef;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.table-toolbar label {
+  color: #52615a;
+  display: grid;
+  font-size: 0.78rem;
+  font-weight: 700;
+  gap: 0.25rem;
+}
+
+.table-toolbar input,
+.table-toolbar select {
+  border: 1px solid #b8c6be;
+  border-radius: 6px;
+  color: #172026;
+  font: inherit;
+  min-height: 2.35rem;
+  min-width: 7rem;
+  padding: 0.45rem 0.55rem;
+}
+
+.file-table-viewport {
+  min-height: 0;
+  overflow: auto;
+}
+
+.file-table {
+  border-collapse: collapse;
+  min-width: 900px;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.file-table th,
+.file-table td {
+  border-bottom: 1px solid #eef2ef;
+  padding: 0.65rem 0.5rem;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.file-table th {
+  color: #52615a;
+  font-size: 0.78rem;
+}
+
+.file-table th:nth-child(1),
+.file-table td:nth-child(1) {
+  width: 20%;
+}
+
+.file-table th:nth-child(2),
+.file-table td:nth-child(2) {
+  width: 7%;
+}
+
+.file-table th:nth-child(3),
+.file-table td:nth-child(3) {
+  width: 11%;
+}
+
+.file-table th:nth-child(4),
+.file-table td:nth-child(4) {
+  width: 14%;
+}
+
+.file-table th:nth-child(5),
+.file-table td:nth-child(5) {
+  width: 14%;
+}
+
+.file-table th:nth-child(7),
+.file-table td:nth-child(7) {
+  width: 8rem;
+}
+
+.file-table-name,
+.file-table-path {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.file-table button {
+  padding: 0.4rem 0.6rem;
+  width: 100%;
+}
+
 @media (max-width: 780px) {
   .scan-panel,
   .results-shell {
@@ -284,5 +386,11 @@ dd {
   .summary-panel {
     border-bottom: 1px solid #d7e0da;
     border-right: 0;
+  }
+
+  .table-toolbar {
+    align-items: stretch;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
   }
 }

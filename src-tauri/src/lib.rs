@@ -9,6 +9,8 @@ pub mod scanner;
 #[cfg(test)]
 pub mod test_support;
 
+use commands::largest::{get_largest_files, get_largest_folders};
+use commands::reveal::reveal_in_explorer;
 use commands::scan::{cancel_scan, get_scan_session, start_scan, AppState};
 use commands::tree::get_children;
 
@@ -22,7 +24,10 @@ pub fn run() {
             start_scan,
             cancel_scan,
             get_scan_session,
-            get_children
+            get_children,
+            get_largest_files,
+            get_largest_folders,
+            reveal_in_explorer
         ])
         .setup(|_app| {
             // FastDisk modules are registered here as implementation phases add commands.

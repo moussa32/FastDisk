@@ -82,5 +82,5 @@ export function getScanErrors(input: GetScanErrorsInput) {
 }
 
 export function revealInExplorer(input: RevealInExplorerInput) {
-  return invoke<void>(commandNames.revealInExplorer, input);
+  return invoke<void>(commandNames.revealInExplorer, { input });
 }

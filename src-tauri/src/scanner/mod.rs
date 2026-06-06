@@ -44,7 +44,10 @@ pub struct ScanOutput {
     pub total_size: i64,
 }
 
-pub fn scan_path(root_path: impl AsRef<Path>, cancel: Arc<AtomicBool>) -> FastDiskResult<ScanOutput> {
+pub fn scan_path(
+    root_path: impl AsRef<Path>,
+    cancel: Arc<AtomicBool>,
+) -> FastDiskResult<ScanOutput> {
     let root_path = root_path.as_ref();
     if !root_path.exists() {
         return Err(FastDiskError::InvalidPath);
@@ -68,7 +71,11 @@ pub fn scan_path(root_path: impl AsRef<Path>, cancel: Arc<AtomicBool>) -> FastDi
                     Ok(metadata) => {
                         let is_directory = metadata.is_dir();
                         let is_symlink = metadata.file_type().is_symlink();
-                        let size = if is_directory { 0 } else { metadata.len() as i64 };
+                        let size = if is_directory {
+                            0
+                        } else {
+                            metadata.len() as i64
+                        };
                         if is_directory {
                             output.total_folders += 1;
                         } else {
@@ -76,15 +83,16 @@ pub fn scan_path(root_path: impl AsRef<Path>, cancel: Arc<AtomicBool>) -> FastDi
                             output.total_size += size;
                         }
                         output.entries.push(ScannedEntry {
-                            parent_path: path.parent().map(Path::to_path_buf).filter(|parent| parent != root_path.parent().unwrap_or(root_path)),
-                            name: dir_entry
-                                .file_name()
-                                .to_string_lossy()
-                                .to_string(),
+                            parent_path: path
+                                .parent()
+                                .map(Path::to_path_buf)
+                                .filter(|parent| parent != root_path.parent().unwrap_or(root_path)),
+                            name: dir_entry.file_name().to_string_lossy().to_string(),
                             extension: if is_directory {
                                 None
                             } else {
-                                path.extension().map(|value| value.to_string_lossy().to_ascii_lowercase())
+                                path.extension()
+                                    .map(|value| value.to_string_lossy().to_ascii_lowercase())
                             },
                             depth: dir_entry.depth() as i64,
                             modified_at: metadata.modified().ok().map(system_time_to_iso),
@@ -95,12 +103,21 @@ pub fn scan_path(root_path: impl AsRef<Path>, cancel: Arc<AtomicBool>) -> FastDi
                             size,
                         });
                     }
-                    Err(error) => output.issues.push(issue_for_path(path, "metadata", error.to_string())),
+                    Err(error) => {
+                        output
+                            .issues
+                            .push(issue_for_path(path, "metadata", error.to_string()))
+                    }
                 }
             }
             Err(error) => {
-                let path = error.path().map(Path::to_path_buf).unwrap_or_else(|| root_path.to_path_buf());
-                output.issues.push(issue_for_path(path, "walkdir", error.to_string()));
+                let path = error
+                    .path()
+                    .map(Path::to_path_buf)
+                    .unwrap_or_else(|| root_path.to_path_buf());
+                output
+                    .issues
+                    .push(issue_for_path(path, "walkdir", error.to_string()));
             }
         }
     }

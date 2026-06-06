@@ -100,7 +100,7 @@ parent-scoped queries, pagination, virtualization, or capped responses.
 
 ## Current Implementation Status
 
-Based on `specs/001-fastdisk-viewer-mvp/tasks.md`, tasks `T001` through `T046`
+Based on `specs/001-fastdisk-viewer-mvp/tasks.md`, tasks `T001` through `T058`
 are complete.
 
 Completed:
@@ -118,10 +118,13 @@ Completed:
 - User Story 2: direct-child-only `get_children` queries, Tree View command
   handler, typed frontend tree API, lazy FileTree rendering, expand/collapse,
   selected folder state, and Tree View integration in the scan results area.
+- User Story 3: bounded Largest Files and Largest Folders backend queries,
+  command handlers, read-only Reveal in Explorer validation, typed frontend
+  wrappers, reusable result table UI, largest file/folder views, reveal action
+  states, and scan result tab integration.
 
 Not yet marked complete:
 
-- User Story 3 Largest Files, Largest Folders, and Reveal in Explorer.
 - User Story 4 Treemap.
 - User Story 5 Search and filters.
 - User Story 6 Previous scans, scan errors UI, and extension summary UI.
@@ -186,9 +189,19 @@ cd src-tauri
 cargo test
 ```
 
-The current plan notes that `rustc` and `cargo` were not on PATH in the shell
-used to create the plan. Install or expose the Rust toolchain before running
-Tauri builds or Rust tests.
+Rust tests were run successfully in this workspace after Cargo downloaded the
+missing test/build dependencies.
+
+Latest validation for tasks `T047` through `T058`:
+
+```powershell
+.\node_modules\.bin\tsc.cmd --noEmit
+.\node_modules\.bin\vitest.cmd run --environment jsdom src/features/largest-files/LargestFilesTable.test.tsx src/features/largest-folders/LargestFoldersTable.test.tsx
+cd src-tauri
+cargo test
+cd ..
+.\node_modules\.bin\vite.cmd build
+```
 
 ## How to Run the App
 

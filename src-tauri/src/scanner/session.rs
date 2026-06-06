@@ -39,7 +39,10 @@ impl ScanManager {
             .active
             .lock()
             .map_err(|_| FastDiskError::Other("Scan manager lock poisoned.".into()))?;
-        if let Some(active) = active.as_ref().filter(|scan| scan.scan_session_id == scan_session_id) {
+        if let Some(active) = active
+            .as_ref()
+            .filter(|scan| scan.scan_session_id == scan_session_id)
+        {
             active.cancel.store(true, Ordering::Relaxed);
             return Ok(true);
         }
@@ -51,7 +54,10 @@ impl ScanManager {
             .active
             .lock()
             .map_err(|_| FastDiskError::Other("Scan manager lock poisoned.".into()))?;
-        if active.as_ref().is_some_and(|scan| scan.scan_session_id == scan_session_id) {
+        if active
+            .as_ref()
+            .is_some_and(|scan| scan.scan_session_id == scan_session_id)
+        {
             return Ok(active.take());
         }
         Ok(None)

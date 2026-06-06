@@ -14,8 +14,14 @@ fn scanner_handles_normal_and_empty_folders() {
 
     let output = scan_path(temp.path(), Arc::new(AtomicBool::new(false))).unwrap();
 
-    assert!(output.entries.iter().any(|entry| entry.name == "empty" && entry.is_directory));
-    assert!(output.entries.iter().any(|entry| entry.name == "hello.txt" && !entry.is_directory));
+    assert!(output
+        .entries
+        .iter()
+        .any(|entry| entry.name == "empty" && entry.is_directory));
+    assert!(output
+        .entries
+        .iter()
+        .any(|entry| entry.name == "hello.txt" && !entry.is_directory));
     assert_eq!(output.total_files, 1);
 }
 
@@ -26,7 +32,11 @@ fn scanner_handles_zero_byte_and_unicode_files() {
 
     let output = scan_path(temp.path(), Arc::new(AtomicBool::new(false))).unwrap();
 
-    let file = output.entries.iter().find(|entry| entry.name == "مرحبا.txt").unwrap();
+    let file = output
+        .entries
+        .iter()
+        .find(|entry| entry.name == "مرحبا.txt")
+        .unwrap();
     assert_eq!(file.size, 0);
     assert_eq!(file.extension.as_deref(), Some("txt"));
 }
@@ -50,5 +60,8 @@ fn scanner_records_symlinks_without_following_them() {
 
     let output = scan_path(temp.path(), Arc::new(AtomicBool::new(false))).unwrap();
 
-    assert!(output.entries.iter().any(|entry| entry.name == "link" && entry.is_symlink));
+    assert!(output
+        .entries
+        .iter()
+        .any(|entry| entry.name == "link" && entry.is_symlink));
 }

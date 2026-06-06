@@ -118,21 +118,21 @@
 
 ### Tests for User Story 3
 
-- [ ] T047 [P] [US3] Add repository and command tests for get_largest_files, get_largest_folders, filters, sorting, and file/folder exclusion in src-tauri/src/commands/tests.rs
-- [ ] T048 [P] [US3] Add reveal_in_explorer command tests for missing path and read-only behavior in src-tauri/src/commands/tests.rs
-- [ ] T049 [P] [US3] Add largest table component tests for rows, sorting, limits, filters, and reveal action states in src/features/largest-files/LargestFilesTable.test.tsx and src/features/largest-folders/LargestFoldersTable.test.tsx
+- [x] T047 [P] [US3] Add repository and command tests for get_largest_files, get_largest_folders, filters, sorting, and file/folder exclusion in src-tauri/src/commands/tests.rs
+- [x] T048 [P] [US3] Add reveal_in_explorer command tests for missing path and read-only behavior in src-tauri/src/commands/tests.rs
+- [x] T049 [P] [US3] Add largest table component tests for rows, sorting, limits, filters, and reveal action states in src/features/largest-files/LargestFilesTable.test.tsx and src/features/largest-folders/LargestFoldersTable.test.tsx
 
 ### Implementation for User Story 3
 
-- [ ] T050 [US3] Implement get_largest_files and get_largest_folders bounded repository queries in src-tauri/src/repository/queries.rs
-- [ ] T051 [US3] Implement get_largest_files and get_largest_folders Tauri commands in src-tauri/src/commands/largest.rs
-- [ ] T052 [US3] Implement reveal_in_explorer command with missing-path friendly errors and no file mutation in src-tauri/src/commands/reveal.rs
-- [ ] T053 [US3] Register largest and reveal commands in src-tauri/src/lib.rs
-- [ ] T054 [US3] Add largest files, largest folders, and reveal frontend API wrappers in src/shared/api/largest.ts and src/shared/api/reveal.ts
-- [ ] T055 [US3] Implement reusable virtualized FileTable component for bounded tabular results in src/shared/components/FileTable.tsx
-- [ ] T056 [US3] Implement LargestFilesTable with default 100 and selectable 500/1000 limits in src/features/largest-files/LargestFilesTable.tsx
-- [ ] T057 [US3] Implement LargestFoldersTable with calculated size and child/descendant counts in src/features/largest-folders/LargestFoldersTable.tsx
-- [ ] T058 [US3] Add Largest Files and Largest Folders tabs to scan results layout in src/App.tsx
+- [x] T050 [US3] Implement get_largest_files and get_largest_folders bounded repository queries in src-tauri/src/repository/queries.rs
+- [x] T051 [US3] Implement get_largest_files and get_largest_folders Tauri commands in src-tauri/src/commands/largest.rs
+- [x] T052 [US3] Implement reveal_in_explorer command with missing-path friendly errors and no file mutation in src-tauri/src/commands/reveal.rs
+- [x] T053 [US3] Register largest and reveal commands in src-tauri/src/lib.rs
+- [x] T054 [US3] Add largest files, largest folders, and reveal frontend API wrappers in src/shared/api/largest.ts and src/shared/api/reveal.ts
+- [x] T055 [US3] Implement reusable virtualized FileTable component for bounded tabular results in src/shared/components/FileTable.tsx
+- [x] T056 [US3] Implement LargestFilesTable with default 100 and selectable 500/1000 limits in src/features/largest-files/LargestFilesTable.tsx
+- [x] T057 [US3] Implement LargestFoldersTable with calculated size and child/descendant counts in src/features/largest-folders/LargestFoldersTable.tsx
+- [x] T058 [US3] Add Largest Files and Largest Folders tabs to scan results layout in src/App.tsx
 
 **Checkpoint**: User Stories 1, 2, and 3 provide the P1 MVP browsing experience.
 
