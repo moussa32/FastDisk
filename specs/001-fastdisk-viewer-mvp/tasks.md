@@ -94,17 +94,17 @@
 
 ### Tests for User Story 2
 
-- [ ] T039 [P] [US2] Add get_children repository and command tests for direct-child-only queries, sorting, limits, and offsets in src-tauri/src/commands/tests.rs
-- [ ] T040 [P] [US2] Add FileTree component tests for root rendering, expand/collapse, lazy loading, selected folder state, and empty children in src/features/tree/FileTree.test.tsx
+- [x] T039 [P] [US2] Add get_children repository and command tests for direct-child-only queries, sorting, limits, and offsets in src-tauri/src/commands/tests.rs
+- [x] T040 [P] [US2] Add FileTree component tests for root rendering, expand/collapse, lazy loading, selected folder state, and empty children in src/features/tree/FileTree.test.tsx
 
 ### Implementation for User Story 2
 
-- [ ] T041 [US2] Implement get_children bounded repository query with parent, sort, limit, and offset support in src-tauri/src/repository/queries.rs
-- [ ] T042 [US2] Implement get_children Tauri command and validation in src-tauri/src/commands/tree.rs
-- [ ] T043 [US2] Add getChildren frontend API wrapper and query keys in src/shared/api/tree.ts
-- [ ] T044 [US2] Implement virtualized lazy FileTree rows with name, type, size, percentage, counts, and modified date in src/features/tree/FileTree.tsx
-- [ ] T045 [US2] Implement selected folder state shared between Tree View and result context in src/features/tree/treeState.ts
-- [ ] T046 [US2] Add Tree View tab and scan result layout integration in src/App.tsx
+- [x] T041 [US2] Implement get_children bounded repository query with parent, sort, limit, and offset support in src-tauri/src/repository/queries.rs
+- [x] T042 [US2] Implement get_children Tauri command and validation in src-tauri/src/commands/tree.rs
+- [x] T043 [US2] Add getChildren frontend API wrapper and query keys in src/shared/api/tree.ts
+- [x] T044 [US2] Implement virtualized lazy FileTree rows with name, type, size, percentage, counts, and modified date in src/features/tree/FileTree.tsx
+- [x] T045 [US2] Implement selected folder state shared between Tree View and result context in src/features/tree/treeState.ts
+- [x] T046 [US2] Add Tree View tab and scan result layout integration in src/App.tsx
 
 **Checkpoint**: User Stories 1 and 2 work independently after the foundation.
 

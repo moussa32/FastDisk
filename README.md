@@ -100,7 +100,7 @@ parent-scoped queries, pagination, virtualization, or capped responses.
 
 ## Current Implementation Status
 
-Based on `specs/001-fastdisk-viewer-mvp/tasks.md`, tasks `T001` through `T038`
+Based on `specs/001-fastdisk-viewer-mvp/tasks.md`, tasks `T001` through `T046`
 are complete.
 
 Completed:
@@ -115,10 +115,12 @@ Completed:
   aggregation, scan commands, scan events, frontend scan API, path picker, scan
   button, progress card, summary card, scan screen integration, and friendly
   scan messages.
+- User Story 2: direct-child-only `get_children` queries, Tree View command
+  handler, typed frontend tree API, lazy FileTree rendering, expand/collapse,
+  selected folder state, and Tree View integration in the scan results area.
 
 Not yet marked complete:
 
-- User Story 2 Tree View lazy loading.
 - User Story 3 Largest Files, Largest Folders, and Reveal in Explorer.
 - User Story 4 Treemap.
 - User Story 5 Search and filters.

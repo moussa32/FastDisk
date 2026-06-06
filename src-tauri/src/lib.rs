@@ -10,6 +10,7 @@ pub mod scanner;
 pub mod test_support;
 
 use commands::scan::{cancel_scan, get_scan_session, start_scan, AppState};
+use commands::tree::get_children;
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
@@ -20,7 +21,8 @@ pub fn run() {
         .invoke_handler(tauri::generate_handler![
             start_scan,
             cancel_scan,
-            get_scan_session
+            get_scan_session,
+            get_children
         ])
         .setup(|_app| {
             // FastDisk modules are registered here as implementation phases add commands.

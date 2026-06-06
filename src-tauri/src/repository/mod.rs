@@ -1,5 +1,6 @@
 #[cfg(test)]
 mod tests;
+pub mod queries;
 pub mod scan_writer;
 
 use rusqlite::{params, Connection};

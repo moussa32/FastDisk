@@ -240,6 +240,41 @@ dd {
   padding: 0.25rem 0.35rem;
 }
 
+.file-tree {
+  overflow: auto;
+  padding: 0.75rem;
+}
+
+.tree-row {
+  align-items: center;
+  border-bottom: 1px solid #eef2ef;
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: 2.25rem minmax(150px, 1fr) 4rem auto 4.5rem minmax(70px, 120px) 6rem 8rem;
+  min-height: 2.75rem;
+}
+
+.tree-row[aria-selected="true"] {
+  background: #f4f7f5;
+}
+
+.tree-row button {
+  padding: 0.35rem 0.45rem;
+}
+
+.tree-name {
+  overflow: hidden;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tree-children {
+  border-left: 1px solid #d7e0da;
+  margin-left: 1rem;
+  padding-left: 0.5rem;
+}
+
 @media (max-width: 780px) {
   .scan-panel,
   .results-shell {

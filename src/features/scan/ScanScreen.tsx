@@ -14,6 +14,7 @@ import { ScanButton } from "./ScanButton";
 import { ScanMessages } from "./ScanMessages";
 import { ScanProgressCard } from "./ScanProgressCard";
 import { ScanSummaryCard } from "./ScanSummaryCard";
+import { FileTree } from "../tree/FileTree";
 
 const resultTabs = [
   "Tree View",
@@ -126,6 +127,23 @@ export function ScanScreen() {
 
           {status === "scanning" ? (
             <ScanProgressCard progress={progress} />
+          ) : session ? (
+            <FileTree
+              root={{
+                id: 0,
+                scanSessionId: session.id,
+                parentId: null,
+                name: session.rootPath,
+                path: session.rootPath,
+                size: session.totalSize,
+                isDirectory: true,
+                depth: 0,
+                isSymlink: false,
+                childCount: session.totalFolders + session.totalFiles,
+                descendantCount: session.totalFolders + session.totalFiles,
+              }}
+              scanSessionId={session.id}
+            />
           ) : (
             <EmptyState
               title="No scan results yet"
