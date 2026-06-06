@@ -35,21 +35,21 @@
 
 **CRITICAL**: No user story work can begin until this phase is complete.
 
-- [ ] T009 Define ScanSession, FileEntry, ScanIssue, ExtensionSummary, TreemapNode, FilterSet, and shared status enums in src-tauri/src/models/mod.rs
-- [ ] T010 Define frontend DTOs and shared command input types matching the contract in src/shared/api/types.ts
-- [ ] T011 Create SQLite connection manager with WAL pragmas and migration runner in src-tauri/src/db/mod.rs
-- [ ] T012 Add scan_sessions, file_entries, scan_errors schema and required indexes in src-tauri/src/db/migrations.rs
-- [ ] T013 [P] Add database migration tests for required tables and indexes in src-tauri/src/db/tests.rs
-- [ ] T014 Create repository layer for scan sessions, file entries, scan issues, and bounded queries in src-tauri/src/repository/mod.rs
-- [ ] T015 [P] Add repository tests for insert, query, pagination, and bounded limit validation in src-tauri/src/repository/tests.rs
-- [ ] T016 Create structured backend error types and frontend-safe error mapping in src-tauri/src/models/errors.rs
-- [ ] T017 Create scan lifecycle event payloads and throttled emitter helper in src-tauri/src/events/mod.rs
-- [ ] T018 [P] Add throttled event tests that prevent per-file progress emission in src-tauri/src/events/tests.rs
-- [ ] T019 Create typed Tauri invoke wrappers for all planned commands in src/shared/api/commands.ts
-- [ ] T020 Create shared formatting utilities for sizes, percentages, dates, and paths in src/shared/utils/format.ts
-- [ ] T021 [P] Add frontend utility tests for size, percentage, date, and path formatting in src/shared/utils/format.test.ts
-- [ ] T022 Create shared EmptyState, ErrorState, LoadingState, SizeBadge, PercentageBar, and Breadcrumb components in src/shared/components/
-- [ ] T023 Create top-level layout with scan selection area, results tabs, and details region in src/App.tsx
+- [x] T009 Define ScanSession, FileEntry, ScanIssue, ExtensionSummary, TreemapNode, FilterSet, and shared status enums in src-tauri/src/models/mod.rs
+- [x] T010 Define frontend DTOs and shared command input types matching the contract in src/shared/api/types.ts
+- [x] T011 Create SQLite connection manager with WAL pragmas and migration runner in src-tauri/src/db/mod.rs
+- [x] T012 Add scan_sessions, file_entries, scan_errors schema and required indexes in src-tauri/src/db/migrations.rs
+- [x] T013 [P] Add database migration tests for required tables and indexes in src-tauri/src/db/tests.rs
+- [x] T014 Create repository layer for scan sessions, file entries, scan issues, and bounded queries in src-tauri/src/repository/mod.rs
+- [x] T015 [P] Add repository tests for insert, query, pagination, and bounded limit validation in src-tauri/src/repository/tests.rs
+- [x] T016 Create structured backend error types and frontend-safe error mapping in src-tauri/src/models/errors.rs
+- [x] T017 Create scan lifecycle event payloads and throttled emitter helper in src-tauri/src/events/mod.rs
+- [x] T018 [P] Add throttled event tests that prevent per-file progress emission in src-tauri/src/events/tests.rs
+- [x] T019 Create typed Tauri invoke wrappers for all planned commands in src/shared/api/commands.ts
+- [x] T020 Create shared formatting utilities for sizes, percentages, dates, and paths in src/shared/utils/format.ts
+- [x] T021 [P] Add frontend utility tests for size, percentage, date, and path formatting in src/shared/utils/format.test.ts
+- [x] T022 Create shared EmptyState, ErrorState, LoadingState, SizeBadge, PercentageBar, and Breadcrumb components in src/shared/components/
+- [x] T023 Create top-level layout with scan selection area, results tabs, and details region in src/App.tsx
 
 **Checkpoint**: Foundation ready. User story implementation can begin.
 

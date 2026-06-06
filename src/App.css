@@ -172,6 +172,59 @@ dd {
   text-align: center;
 }
 
+.state-message {
+  align-content: center;
+  color: #52615a;
+  display: grid;
+  gap: 0.35rem;
+  justify-content: center;
+  min-height: 100%;
+  padding: 2rem;
+  text-align: center;
+}
+
+.state-message strong {
+  color: #172026;
+}
+
+.error-state strong {
+  color: #a23b32;
+}
+
+.size-badge {
+  background: #e5f3ee;
+  border-radius: 999px;
+  color: #174f41;
+  display: inline-block;
+  font-weight: 700;
+  padding: 0.15rem 0.5rem;
+}
+
+.percentage-bar {
+  background: #eef2ef;
+  border-radius: 999px;
+  height: 0.5rem;
+  margin-top: 1rem;
+  overflow: hidden;
+}
+
+.percentage-bar span {
+  background: #23715d;
+  display: block;
+  height: 100%;
+}
+
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.breadcrumb button {
+  border-color: transparent;
+  padding: 0.25rem 0.35rem;
+}
+
 @media (max-width: 780px) {
   .scan-panel,
   .results-shell {

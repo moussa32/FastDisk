@@ -1,4 +1,5 @@
 import "./App.css";
+import { EmptyState, PercentageBar, SizeBadge } from "./shared/components";
 
 const resultTabs = [
   "Tree View",
@@ -43,13 +44,16 @@ function App() {
             </div>
             <div>
               <dt>Total size</dt>
-              <dd>0 B</dd>
+              <dd>
+                <SizeBadge bytes={0} />
+              </dd>
             </div>
             <div>
               <dt>Skipped items</dt>
               <dd>0</dd>
             </div>
           </dl>
+          <PercentageBar value={0} />
         </aside>
 
         <section className="results-panel">
@@ -66,10 +70,10 @@ function App() {
               </button>
             ))}
           </div>
-          <div className="empty-results">
-            Complete a scan to browse folders, largest items, treemap data, file
-            types, and scan errors.
-          </div>
+          <EmptyState
+            title="No scan results yet"
+            description="Complete a scan to browse folders, largest items, treemap data, file types, and scan errors."
+          />
         </section>
       </section>
     </main>
